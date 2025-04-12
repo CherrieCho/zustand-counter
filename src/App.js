@@ -1,5 +1,6 @@
 import "./App.css";
-import { useState } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Countbox from "./components/Countbox";
 import counterStore from "./stores/counterStore";
 
@@ -8,18 +9,34 @@ function App() {
   const { count, increaseBy, decreaseBy, reset } = counterStore();
   return (
     <div>
-      <div className="count-container">
-        <div>
-          <Countbox count={count} />
-        </div>
-        <div className="buttons">
-          <button onClick={() => increaseBy(1)}>+1</button>
-          <button onClick={() => increaseBy(10)}>+10</button>
-          <button onClick={() => decreaseBy(1)}>-1</button>
-          <button onClick={() => decreaseBy(10)}>-10</button>
-          <button onClick={reset}>리셋</button>
-        </div>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <div className="count-container">
+              <div>
+                <Countbox count={count} />
+              </div>
+              <div className="buttons">
+                <Button variant="info" onClick={() => increaseBy(1)}>
+                  +1
+                </Button>
+                <Button variant="info" onClick={() => increaseBy(10)}>
+                  +10
+                </Button>
+                <Button variant="info" onClick={() => decreaseBy(1)}>
+                  -1
+                </Button>
+                <Button variant="info" onClick={() => decreaseBy(10)}>
+                  -10
+                </Button>
+                <Button variant="info" onClick={reset}>
+                  리셋
+                </Button>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
